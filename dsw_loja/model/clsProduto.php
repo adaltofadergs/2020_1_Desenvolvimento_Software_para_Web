@@ -2,16 +2,19 @@
     class Produto{
         // Atributos ou características
         public $id;
-        public $nome, $preco, $quantidade;
+        public $nome, $preco, $quantidade, $foto;
+        public $categoria;
 
 
         // Métodos ou ações
-        public function __construct($id = NULL, $nome = NULL, $preco = NULL, $qtd = NULL)
+        public function __construct($_id = NULL, $nome = NULL, $preco = NULL, $qtd = NULL, $categoria = NULL, $foto = NULL)
         {
-            $this->id = $id;
+            $this->id = $_id;
             $this->nome = $nome;
             $this->preco = $preco;
-            $this->quantidade = $qtd;      
+            $this->quantidade = $qtd;   
+            $this->categoria = $categoria;   
+            $this->foto = $foto;
         }
 
         public function imprimirNomePreco(){

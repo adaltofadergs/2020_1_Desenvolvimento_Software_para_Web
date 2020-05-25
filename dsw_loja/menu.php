@@ -1,6 +1,6 @@
 <div id="menu">
     <a href="index.php"><button>Início</button></a>
-    
+    <a href="produtos.php"><button>Produtos</button></a>
     
     <?php
         if( session_status() != PHP_SESSION_ACTIVE ){

@@ -2,7 +2,7 @@
 
 $nome = $_POST['txtNome'];
 
-include "clsConexao.php";
+include "model/clsConexao.php";
 
 if( isset( $_REQUEST['inserir']) ){
     $query = "INSERT INTO categorias (nome) VALUES ( '$nome' )";

@@ -1,5 +1,5 @@
 <?php
-    include_once "clsConexao.php";
+    include_once "model/clsConexao.php";
 // $usuario_cadastrado = "admin";
 // $senha_cadastrada = "123";
     $user = $_POST['user'];

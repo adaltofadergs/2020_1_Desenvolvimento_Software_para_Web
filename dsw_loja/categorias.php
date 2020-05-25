@@ -33,7 +33,7 @@
         </tr>
 
         <?php
-            include_once 'clsConexao.php';
+            include_once 'model/clsConexao.php';
             $query = "SELECT * FROM categorias";
             $result = Conexao::consultar( $query );
 
