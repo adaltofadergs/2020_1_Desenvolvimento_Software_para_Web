@@ -1,6 +1,7 @@
 <div id="menu">
     <a href="index.php"><button>Início</button></a>
     <a href="produtos.php"><button>Produtos</button></a>
+    <a href="meuCarrinho.php"><button>Carrinho de Compras</button></a>
     
     <?php
         if( session_status() != PHP_SESSION_ACTIVE ){

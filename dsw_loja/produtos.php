@@ -26,7 +26,7 @@
 if (  isset( $_SESSION['logado']) && $_SESSION['logado'] ){ 
 ?>
 
-    <form method="POST" action="controller/salvarProduto.php?<?php echo $action; ?>">
+    <form method="POST" action="controller/salvarProduto.php?<?php echo $action; ?>" enctype="multipart/form-data">
         <label for="txtNome">Nome:</label>
         <input type="text" name="txtNome" required />
         <br>
@@ -62,28 +62,52 @@ if (  isset( $_SESSION['logado']) && $_SESSION['logado'] ){
 
     <hr>
 
+<?php
+    $lista = ProdutoDAO::getProdutos();
+
+    if( count($lista) == 0 ){
+        echo "<h2>Nenhum produto cadastrado</h2>";
+    }else{ 
+
+?>
+
+
     <table id="tbl_categorias">
         <tr>
             <th>Código</th>
+            <th>Foto</th>
             <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+            <th>Excluir</th>
+            <th>Adicionar ao Carrinho</th>
         </tr>
 
         <?php
-            include_once 'model/clsConexao.php';
-            $query = "SELECT * FROM categorias";
-            $result = Conexao::consultar( $query );
 
-            while( $cat = mysqli_fetch_array($result)){
+
+            
+
+            foreach( $lista as $produto){
                 echo '<tr>'; 
-                echo '    <td>'.$cat['id'].'</td>';
-                echo '    <td>'.$cat['nome'].'</td>';
+                echo '    <td>'.$produto->id.'</td>';
+                echo '    <td><img src="fotos_produtos/'.$produto->foto.'" width="30px" ></td>';
+                echo '    <td>'.$produto->nome.'</td>';
+                echo '    <td>R$ '.$produto->preco.'</td>';
+                echo '    <td>'.$produto->quantidade.'</td>';
+                echo '    <td>'.$produto->categoria->nome.'</td>';
+                echo '    <td><a href="controller/salvarProduto.php?excluir&idProduto='.$produto->id.'">Excluir</a></td>';
+                echo '    <td><a href="controller/carrinho.php?adicionar&idProduto='.$produto->id.'">Adicionar ao Carrinho</a></td>';
                 echo '</tr>';
             }
         ?>
         
     </table>
 
-
+<?php 
+    }
+?>
     
 </body>
 </html>
